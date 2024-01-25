@@ -2,14 +2,15 @@ import LangOptions from "./LangOptions.tsx";
 
 function TextInput() {
 
+
+
     return (
-        <>
+        <div className="grid grid-cols-1">
             <LangOptions/>
-            <div>
-                <textarea className="w-60 h-10 border-solid border-gray-300 rounded-md border-2">
-                </textarea>
+            <div className="w-full h-14 border-solid border-gray-300 rounded-md border-2">
+                <textarea className="w-full h-full"/>
             </div>
-        </>
+        </div>
     );
 }
 

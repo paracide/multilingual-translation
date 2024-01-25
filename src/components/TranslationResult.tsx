@@ -1,14 +1,17 @@
 import LangOptions from "./LangOptions.tsx";
 
-function TranslationResult() {
+interface TranslationResultProps {
+    selected: string
+}
+
+function TranslationResult(props: TranslationResultProps) {
     return (
-        <>
-            <LangOptions/>
-            <div className="w-60 h-10 border-solid border-gray-300 rounded-md border-2 bg-gray-300">
+        <div className="grid grid-cols-1">
+            <LangOptions selected={props.selected}/>
+            <div className="w-auto h-14 border-solid border-gray-300 rounded-md border-2 bg-gray-300">
 
             </div>
-
-        </>
+        </div>
     );
 }
 
