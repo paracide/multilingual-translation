@@ -1,7 +1,6 @@
 import {resultStore} from "../store/store.ts";
 import _ from 'lodash';
 
-
 export async function goGoogle(sl: string, tl: string, q: string): Promise<string[]> {
     const baseUrl = "https://clients5.google.com/translate_a/t";
     const queryParams = new URLSearchParams({
