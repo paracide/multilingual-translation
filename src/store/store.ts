@@ -1,16 +1,15 @@
 import {proxy} from "valtio";
-import {proxyMap} from "valtio/utils";
 
 
 interface Store {
     originLang: string,
-    targetLang: Map<string, string>
-    selectLang: string
+    targetLang: string[]
+    addLang: string
 }
 
 export const store = proxy<Store>({
     originLang: 'en',
-    targetLang: proxyMap([['zh-CN', '']]),
-    selectLang: 'en'
+    targetLang: ['zh-CN'],
+    addLang: 'en'
 });
 
