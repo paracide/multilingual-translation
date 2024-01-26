@@ -1,13 +1,16 @@
 import LangOptions from "./LangOptions.tsx";
 import {store} from "../store/store.ts";
 import {useSnapshot} from "valtio";
+import {translateOne} from "../apis/googleApi.ts";
 
 function LangAddCard() {
     const snap = useSnapshot(store);
 
-    function handleAdd() {
+    async function handleAdd() {
         if (!snap.targetLang.includes(snap.addLang)) {
             store.targetLang.push(snap.addLang);
+            /*translate when the first time*/
+            await translateOne(snap.originLang, snap.addLang, snap.searchText);
         }
     }
 

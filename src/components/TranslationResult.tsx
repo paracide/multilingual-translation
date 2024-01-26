@@ -1,7 +1,7 @@
 import {resultStore, store} from "../store/store.ts";
 import LangOptions from "./LangOptions.tsx";
-import {goGoogle} from "../apis/api.ts";
 import {useSnapshot} from "valtio";
+import {translateOne} from "../apis/googleApi.ts";
 
 interface TranslationResultProps {
     selected: string,
@@ -14,17 +14,9 @@ function TranslationResult(props: TranslationResultProps) {
 
     const resultLangChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newTargetLang = event.target.value;
+        /*change the selectedLang state*/
         store.targetLang = store.targetLang.map(v => v === props.selected ? newTargetLang : v);
         await translateOne(snap.originLang, newTargetLang, snap.searchText);
-    }
-
-    const translateOne = async (sl: string, tl: string, q: string) => {
-        try {
-            const response = await goGoogle(sl, tl, q);
-            resultStore.results.set(tl, response[0]);
-        } catch (error) {
-            console.error('Translation error:', error);
-        }
     }
 
     return (
