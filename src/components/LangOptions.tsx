@@ -1,6 +1,6 @@
 import lang from "../config/lang.ts";
 import {useTranslation} from "react-i18next";
-import state from "../store/store.ts";
+import {store} from "../store/store.ts";
 
 interface LangOptionsProps {
     onLangChange?: boolean;
@@ -12,7 +12,7 @@ function LangOptions(props: LangOptionsProps) {
 
     function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
         if (props.onLangChange)
-            state.selectLang = event.target.value;
+            store.selectLang = event.target.value;
     }
 
     return (

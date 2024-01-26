@@ -1,13 +1,12 @@
 import LangOptions from "./LangOptions.tsx";
-import state from "../store/store.ts";
+import {store} from "../store/store.ts";
 import {useSnapshot} from "valtio";
 
 function AddButton() {
-    const snap = useSnapshot(state);
+    const snap = useSnapshot(store);
 
     function handleAdd() {
-        state.targetLang = new Set(state.targetLang).add(snap.selectLang);
-        console.log(state.targetLang);
+        store.targetLang.set(snap.selectLang, "")
     }
 
     return (

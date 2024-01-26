@@ -1,7 +1,8 @@
 import LangOptions from "./LangOptions.tsx";
 
 interface TranslationResultProps {
-    selected: string
+    selected: string,
+    result: string
 }
 
 function TranslationResult(props: TranslationResultProps) {
@@ -9,7 +10,7 @@ function TranslationResult(props: TranslationResultProps) {
         <div className="grid grid-cols-1">
             <LangOptions selected={props.selected}/>
             <div className="w-auto h-14 border-solid border-gray-300 rounded-md border-2 bg-gray-300">
-
+                {props.result}
             </div>
         </div>
     );
