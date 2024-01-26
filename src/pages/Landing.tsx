@@ -5,9 +5,11 @@ const Landing = () => {
     const {t} = useTranslation();
 
     return (
-        <div>
+        <>
             <Helmet>
                 <title>{t('ogTitle')}</title>
+                <link rel="icon" type="image/svg+xml" href="/icon.webp"/>
+                <meta charSet="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <meta name="description" content={t('description')}/>
                 <meta name="keywords" content={t('keywords')}/>
@@ -24,7 +26,7 @@ const Landing = () => {
                 <meta name="twitter:description" content={t('twitterDescription')}/>
                 <meta name="twitter:image" content="/logo.webp"/>
             </Helmet>
-        </div>
+        </>
     );
 };
 
