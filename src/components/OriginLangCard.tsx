@@ -19,7 +19,7 @@ function OriginLangCard() {
                 <LangOptions/>
             </select>
             <div className="w-full h-14 border-solid border-gray-300 rounded-md border-2">
-                <textarea className="w-full h-full" onChange={inputChanged}/>
+                <textarea maxLength={100} className="w-full h-full" onChange={inputChanged}/>
             </div>
         </div>
     );

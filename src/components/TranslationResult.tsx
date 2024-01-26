@@ -2,6 +2,7 @@ import {resultStore, store} from "../store/store.ts";
 import LangOptions from "./LangOptions.tsx";
 import {useSnapshot} from "valtio";
 import {translateOne} from "../apis/googleApi.ts";
+import _ from 'lodash';
 
 interface TranslationResultProps {
     selected: string,
@@ -19,14 +20,29 @@ function TranslationResult(props: TranslationResultProps) {
         await translateOne(snap.originLang, newTargetLang, snap.searchText);
     }
 
+    const removeCard = () => {
+        _.remove(store.targetLang, v => v === props.selected);
+        resultStore.results.delete(props.selected);
+    }
+
+
     return (
-        <div className="grid grid-cols-1">
-            <select onChange={resultLangChange} value={props.selected}>
-                <LangOptions/>
-            </select>
-            <div className="w-auto h-14 border-solid border-gray-300 rounded-md border-2 bg-gray-300">
-                {mResult}
+        <div className="grid grid-cols-1 h-20 shadow-md rounded-md hover:shadow-lg bg-gray-300 overflow-hidden">
+            <div className="grid grid-cols-8 h-8 overflow-hidden">
+                <select className="col-span-7 h-8 bg-gray-300" onChange={resultLangChange} value={props.selected}>
+                    <LangOptions/>
+                </select>
+                <button onClick={removeCard} className="col-span-1 h-8 w-auto rounded-none bg-red-400">
+                    X
+                </button>
             </div>
+
+            <div className="w-full h-full">
+                <div className="w-full h-full">
+                    {mResult}
+                </div>
+            </div>
+
         </div>
     );
 }
