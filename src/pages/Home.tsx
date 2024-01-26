@@ -9,9 +9,9 @@ export default function Home() {
     const snap = useSnapshot(store)
 
     return (
-        <main className="grid grid-cols-2 grid-rows-5 gap-4 h-screen w-screen p-2">
+        <main className="grid grid-cols-2 p-4 gap-2 w-screen">
             <OriginLangCard/>
-            <Submit />
+            <Submit/>
             {
                 snap.targetLang.map(k => (
                     <TranslationResult key={k} selected={k}/>

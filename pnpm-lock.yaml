@@ -8,6 +8,9 @@ dependencies:
   '@types/lodash':
     specifier: ^4.14.202
     version: 4.14.202
+  '@types/react-helmet':
+    specifier: ^6.1.11
+    version: 6.1.11
   i18next:
     specifier: ^23.7.19
     version: 23.7.19
@@ -23,6 +26,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-helmet-async:
+    specifier: ^2.0.4
+    version: 2.0.4(react-dom@18.2.0)(react@18.2.0)
   react-i18next:
     specifier: ^14.0.1
     version: 14.0.1(i18next@23.7.19)(react-dom@18.2.0)(react@18.2.0)
@@ -804,6 +810,12 @@ packages:
     dependencies:
       '@types/react': 18.2.48
     dev: true
+
+  /@types/react-helmet@6.1.11:
+    resolution: {integrity: sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==}
+    dependencies:
+      '@types/react': 18.2.48
+    dev: false
 
   /@types/react@18.2.48:
     resolution: {integrity: sha512-qboRCl6Ie70DQQG9hhNREz81jqC1cs9EVNcjQ1AU+jH6NFfSAhVVbrrY/+nSF+Bsk4AOwm9Qa61InvMCyV+H3w==}
@@ -1646,6 +1658,12 @@ packages:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
 
+  /invariant@2.2.4:
+    resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
+
   /is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
@@ -2071,6 +2089,23 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-fast-compare@3.2.2:
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
+    dev: false
+
+  /react-helmet-async@2.0.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yxjQMWposw+akRfvpl5+8xejl4JtUlHnEBcji6u8/e6oc7ozT+P9PNTWMhCbz2y9tc5zPegw2BvKjQA+NwdEjQ==}
+    peerDependencies:
+      react: ^16.6.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      invariant: 2.2.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-fast-compare: 3.2.2
+      shallowequal: 1.1.0
+    dev: false
+
   /react-i18next@14.0.1(i18next@23.7.19)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-TMV8hFismBmpMdIehoFHin/okfvgjFhp723RYgIqB4XyhDobVMyukyM3Z8wtTRmajyFMZrBl/OaaXF2P6WjUAw==}
     peerDependencies:
@@ -2193,6 +2228,10 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /shallowequal@1.1.0:
+    resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
+    dev: false
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}

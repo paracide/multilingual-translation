@@ -25,7 +25,6 @@ function TranslationResult(props: TranslationResultProps) {
         resultStore.results.delete(props.selected);
     }
 
-
     return (
         <div className="grid grid-cols-1 h-20 shadow-md rounded-md hover:shadow-lg bg-gray-300 overflow-hidden">
             <div className="grid grid-cols-8 h-8 overflow-hidden">
