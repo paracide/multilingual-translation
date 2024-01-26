@@ -4,8 +4,13 @@ import {store} from "../store/store.ts";
 
 function OriginLangCard() {
     const snap = useSnapshot(store);
+
     function langChanged(event: React.ChangeEvent<HTMLSelectElement>) {
         store.originLang = event.target.value;
+    }
+
+    function inputChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
+        store.searchText = event.target.value;
     }
 
     return (
@@ -14,7 +19,7 @@ function OriginLangCard() {
                 <LangOptions/>
             </select>
             <div className="w-full h-14 border-solid border-gray-300 rounded-md border-2">
-                <textarea className="w-full h-full"/>
+                <textarea className="w-full h-full" onChange={inputChanged}/>
             </div>
         </div>
     );

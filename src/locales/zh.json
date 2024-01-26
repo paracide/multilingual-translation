@@ -1,5 +1,7 @@
 {
   "title": "多语种翻译",
+  "submitButton": "提交",
+  "copyResultButton": "复制结果",
   "ar": "阿拉伯语",
   "bn": "孟加拉语",
   "bg": "保加利亚语",

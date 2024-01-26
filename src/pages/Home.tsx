@@ -3,12 +3,15 @@ import LangAddCard from "../components/LangAddCard.tsx";
 import {store} from "../store/store.ts";
 import TranslationResult from "../components/TranslationResult.tsx";
 import {useSnapshot} from "valtio";
+import Submit from "../components/Submit.tsx";
 
-function Home() {
+export default function Home() {
     const snap = useSnapshot(store)
+
     return (
         <main className="grid grid-cols-2 grid-rows-5 gap-4 h-screen w-screen p-2">
             <OriginLangCard/>
+            <Submit />
             {
                 snap.targetLang.map(k => (
                     <TranslationResult key={k} selected={k}/>
@@ -19,4 +22,4 @@ function Home() {
     );
 }
 
-export default Home;
+

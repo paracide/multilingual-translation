@@ -1,5 +1,7 @@
 {
   "title": "Multilingual Translations",
+  "submitButton": "Submit",
+  "copyResultButton": "Copy Result",
   "ar": "Arabic",
   "bn": "Bengali",
   "bg": "Bulgarian",
