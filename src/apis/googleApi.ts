@@ -32,7 +32,6 @@ export const translateOne = async (sl: string, tl: string, q: string) => {
 }
 
 export const translateAll = async (sl: string, targetLang: string[], q: string) => {
-
     targetLang.forEach(tl => {
         translateOne(sl, tl, q).catch(error => {
             console.error(`Translation error for language ${tl}:`, error);

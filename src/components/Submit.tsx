@@ -13,7 +13,7 @@ export default function Submit() {
     }
 
     function copyToClipboard() {
-        const rr = [snap.searchText, ...resultSnap.results.values()]
+        const rr = [...resultSnap.results.values()]
         navigator.clipboard.writeText(rr.join("\t"));
     }
 

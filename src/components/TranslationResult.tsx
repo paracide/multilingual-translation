@@ -22,7 +22,9 @@ function TranslationResult(props: TranslationResultProps) {
 
     const removeCard = () => {
         _.remove(store.targetLang, v => v === props.selected);
+        console.log(resultStore.results.size)
         resultStore.results.delete(props.selected);
+        console.log(resultStore.results.size)
     }
 
     return (
