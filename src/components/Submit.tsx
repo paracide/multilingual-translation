@@ -1,19 +1,16 @@
 import {useTranslation} from "react-i18next";
-import {useSnapshot} from "valtio";
 import {resultStore, store} from "../store/store.ts";
 import {translateAll} from "../apis/googleApi.ts";
 
 export default function Submit() {
     const {t} = useTranslation();
-    const snap = useSnapshot(store);
-    const resultSnap = useSnapshot(resultStore);
 
     async function handleSubmit() {
-        await translateAll(snap.originLang, [...snap.targetLang], snap.searchText);
+        await translateAll(store.originLang, [...store.targetLang], store.searchText);
     }
 
     function copyToClipboard() {
-        const rr = [...resultSnap.results.values()]
+        const rr = [...resultStore.results.values()]
         navigator.clipboard.writeText(rr.join("\t"));
     }
 

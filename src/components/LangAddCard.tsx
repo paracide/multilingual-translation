@@ -7,10 +7,11 @@ function LangAddCard() {
     const snap = useSnapshot(store);
 
     async function handleAdd() {
-        if (!snap.targetLang.includes(snap.addLang)) {
-            store.targetLang.push(snap.addLang);
+        const addLang = store.addLang;
+        if (!store.targetLang.includes(addLang)) {
+            store.targetLang.push(addLang);
             /*translate when the first time*/
-            await translateOne(snap.originLang, snap.addLang, snap.searchText);
+            await translateOne(store.originLang, addLang, store.searchText);
         }
     }
 

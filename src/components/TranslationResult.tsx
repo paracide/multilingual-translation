@@ -9,15 +9,13 @@ interface TranslationResultProps {
 }
 
 function TranslationResult(props: TranslationResultProps) {
-    const snap = useSnapshot(store);
     const resultSnap = useSnapshot(resultStore);
-    const mResult = resultSnap.results.get(props.selected);
 
     const resultLangChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newTargetLang = event.target.value;
         /*change the selectedLang state*/
         store.targetLang = store.targetLang.map(v => v === props.selected ? newTargetLang : v);
-        await translateOne(snap.originLang, newTargetLang, snap.searchText);
+        await translateOne(store.originLang, newTargetLang, store.searchText);
     }
 
     const removeCard = () => {
@@ -40,7 +38,7 @@ function TranslationResult(props: TranslationResultProps) {
 
             <div className="w-full h-full">
                 <div className="w-full h-full">
-                    {mResult}
+                    {resultSnap.results.get(props.selected)}
                 </div>
             </div>
 
