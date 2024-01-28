@@ -10,8 +10,7 @@ export default function Submit() {
     }
 
     function copyToClipboard() {
-        const rr = [...resultStore.results.values()]
-        navigator.clipboard.writeText(rr.join("\t"));
+        navigator.clipboard.writeText(store.targetLang.map(v => resultStore.results.get(v)).join("\t"));
     }
 
     return (
