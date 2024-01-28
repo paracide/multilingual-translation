@@ -1,40 +1,45 @@
 import {resultStore} from "../store/store.ts";
 import _ from 'lodash';
 
-export async function goGoogle(sl: string, tl: string, q: string): Promise<string[]> {
+export async function goGoogle(originalLang: string, targetLang: string, text: string): Promise<string[]> {
     const baseUrl = "https://clients5.google.com/translate_a/t";
     const queryParams = new URLSearchParams({
         client: "dict-chrome-ex",
-        sl,
-        tl,
-        q
+        sl: originalLang,
+        tl: targetLang,
+        q: text
     });
     const url = `${baseUrl}?${queryParams.toString()}`;
 
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+        return await response.json() as Promise<string[]>;
+    } catch (error) {
+        console.error(error);
+        throw error; // Re-throw the error for the caller to handle
     }
-
-    return await response.json() as Promise<string[]>;
 }
 
-export const translateOne = async (sl: string, tl: string, q: string) => {
-    if (_.isEmpty(q.trim())) {
+
+export const translateOne = async (originLang: string, targetLang: string, text: string) => {
+    if (_.isEmpty(text.trim())) {
         resultStore.results.clear();
     }
     try {
-        const response = await goGoogle(sl, tl, q);
-        resultStore.results.set(tl, response[0]);
+        const response = await goGoogle(originLang, targetLang, text);
+        resultStore.results.set(targetLang, response[0]);
     } catch (error) {
         console.error('Translation error:', error);
     }
 }
 
-export const translateAll = async (sl: string, targetLang: string[], q: string) => {
-    targetLang.forEach(tl => {
-        translateOne(sl, tl, q).catch(error => {
-            console.error(`Translation error for language ${tl}:`, error);
+export const translateAll = async (originLang: string, targetLang: string[], text: string) => {
+    targetLang.forEach(v => {
+        translateOne(originLang, v, text).catch(error => {
+            console.error(`Translation error for language ${v}:`, error);
         });
     });
 };
